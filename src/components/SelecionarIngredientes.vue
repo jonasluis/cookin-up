@@ -1,9 +1,30 @@
 <script lang="ts">
-export default{}
+import { obterCategorias } from '@/http';
+
+export default{
+  data(){
+    return{
+      categorias: obterCategorias()
+    }
+  }
+}
 </script>
 
 <template>
-    Selecionar
+    <section class="selecionar-ingredientes">
+        <h2 class="titulo-ingredientes">Ingredientes</h2>
+        <p class="paragrafo-lg instrucoes">Selecione os ingredientes que você deseja usar para fazer sua receita:</p>
+        <ul class="categorias">
+          <li v-for="categoria in categorias" :key="categoria.nome">
+            {{ categoria.nome }}
+
+          </li>
+        </ul>
+
+        <p class="paragrafo dica">
+          *Atenção Consideramos que você tem em casa sal, pimenta e água.
+        </p>
+    </section>
 </template>
 
 
