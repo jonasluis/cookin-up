@@ -13,8 +13,8 @@ export default{
   },
   async created(){
       this.categorias = await obterCategorias();
-
-  }
+  },
+  emits: ['adicionarIngrediente']
 }
 </script>
 
@@ -24,7 +24,7 @@ export default{
         <p class="paragrafo-lg instrucoes">Selecione os ingredientes que você deseja usar para fazer sua receita:</p>
         <ul class="categorias">
           <li v-for="categoria in categorias" :key="categoria.nome">
-            <CardCategoria :categoria="categoria" />
+            <CardCategoria :categoria="categoria" @adicionar-ingrediente="$emit('adicionarIngrediente', $event)"/>
      </li>
         </ul>
 
