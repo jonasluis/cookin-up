@@ -12,7 +12,15 @@ export default {
   components: { SelecionarIngredientes, Tag, SuaLista },
   methods: {
     adicionarIngrediente(ingrediente: string) {
-      this.ingredientes.push(ingrediente)
+      const index = this.ingredientes.indexOf(ingrediente);
+      
+      if (index === -1) {
+        // Ingrediente não existe na lista, adiciona
+        this.ingredientes.push(ingrediente);
+      } else {
+        // Ingrediente já existe na lista, remove
+        this.ingredientes.splice(index, 1);
+      }
     }
   }
 }
