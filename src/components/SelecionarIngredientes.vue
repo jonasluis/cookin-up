@@ -1,8 +1,11 @@
 <script lang="ts">
 import { obterCategorias } from '@/http';
 import type ICategoria from '@/interfaces/ICategoria';
+import CardCategoria from './CardCategoria.vue';
+
 
 export default{
+  components: { CardCategoria },
   data(){
     return{
       categorias: [] as ICategoria[]
@@ -21,9 +24,8 @@ export default{
         <p class="paragrafo-lg instrucoes">Selecione os ingredientes que você deseja usar para fazer sua receita:</p>
         <ul class="categorias">
           <li v-for="categoria in categorias" :key="categoria.nome">
-            {{ categoria.nome }}
-
-          </li>
+            <CardCategoria :categoria="categoria" />
+     </li>
         </ul>
 
         <p class="paragrafo dica">
@@ -38,6 +40,7 @@ export default{
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 2em;
 }
 
 .titulo-ingredientes {
