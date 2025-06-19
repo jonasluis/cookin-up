@@ -2,10 +2,11 @@
 import { obterCategorias } from '@/http';
 import type ICategoria from '@/interfaces/ICategoria';
 import CardCategoria from './CardCategoria.vue';
+import BotaoPrincipal from './BotaoPrincipal.vue';
 
 
 export default{
-  components: { CardCategoria },
+  components: { CardCategoria, BotaoPrincipal },
   data(){
     return{
       categorias: [] as ICategoria[]
@@ -31,6 +32,8 @@ export default{
         <p class="paragrafo dica">
           *Atenção Consideramos que você tem em casa sal, pimenta e água.
         </p>
+
+        <BotaoPrincipal texto="Buscar Receitas!"/>
     </section>
 </template>
 
