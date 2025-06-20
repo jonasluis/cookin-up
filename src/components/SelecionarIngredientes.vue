@@ -6,6 +6,7 @@ import BotaoPrincipal from './BotaoPrincipal.vue';
 
 
 export default{
+  name: 'SelecionarIngredientes',
   components: { CardCategoria, BotaoPrincipal },
   data(){
     return{

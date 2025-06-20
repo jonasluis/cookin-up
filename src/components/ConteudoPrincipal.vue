@@ -7,6 +7,7 @@ import Tag from './Tag.vue';
 type Pagina = 'SelecionarIngredientes' | 'MostrarReceitas'
 
 export default {
+  
   data() {
     return {
       ingredientes: [] as string[],
@@ -37,11 +38,14 @@ export default {
   <main class="conteudo-principal">
     <SuaLista :ingredientes="ingredientes" />
 
-    <SelecionarIngredientes v-if="conteudo === 'SelecionarIngredientes'" @adicionar-ingrediente="adicionarIngrediente"
-    @buscar-receitas="navegar('MostrarReceitas')"/>
+    <KeepAlive include="SelecionarIngredientes">
 
-    <MostrarReceitas v-else-if="conteudo === 'MostrarReceitas'"
-    @editar-receitas="navegar('SelecionarIngredientes')"/>
+      <SelecionarIngredientes v-if="conteudo === 'SelecionarIngredientes'" @adicionar-ingrediente="adicionarIngrediente"
+      @buscar-receitas="navegar('MostrarReceitas')"/>
+      
+      <MostrarReceitas v-else-if="conteudo === 'MostrarReceitas'"
+      @editar-receitas="navegar('SelecionarIngredientes')"/>
+    </KeepAlive>
   </main>
 </template>
 
